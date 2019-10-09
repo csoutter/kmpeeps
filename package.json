@@ -1,0 +1,24 @@
+{
+  "name": "kmpeeps",
+  "version": "1.0.0",
+  "description": "COMP 426 F19 Final Project: Helping nursing mothers find lactation rooms on campus. Created By: Abby Brosnan, Jessica Davis, and Cassidy Soutter",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/csoutter/kmpeeps.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/csoutter/kmpeeps/issues"
+  },
+  "homepage": "https://github.com/csoutter/kmpeeps#readme",
+  "dependencies": {
+    "browser-sync": "^2.26.7",
+    "bulma": "^0.7.5",
+    "jquery": "^3.4.1"
+  }
+}
