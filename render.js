@@ -11,8 +11,9 @@ export const renderLactationRoom = function(room) {
     let comments = `<br><p><strong>Comments:</strong></p>` + makeComments(room.comments);
     // TODO add a button for get directions that will tie in map api
     let button = `<button id="${room.id}Button" class="button" style="background-color:black; color: white; margin-top: 10px;">Comment about this Room</button>`;
+    let dir_button = `<button id="${room.id}Button" class="button" style="background-color:black; color: white; margin-top: 10px;">Get directions to this Room</button>`;
     let close = `</div>`;
-    return box + location + ammenities + comments + button+ close;
+    return box + location + ammenities + comments + button + dir_button + close;
 };
 
 export const makeComments = function(comments) {

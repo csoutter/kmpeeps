@@ -303,7 +303,7 @@ const lactationData = [{
     id: 15,
     campusLocation: "South", //enums: north, south, central, off
     img: "pictures/15.png",
-    address: "Mary Ellen Jones BuildingChapel Hill, NC 27599",
+    address: "Mary Ellen Jones Building, Chapel Hill, NC 27599",
     building: "Mary Ellen Jones Building",
     floor: 3,
     numRooms: 1,
@@ -323,5 +323,280 @@ const lactationData = [{
         name: "Maddie",
         time: new Date(2019, 10, 10),
         message: "Comfy room, outlet avaiable"
+    }]
+},{
+    id: 16,
+    campusLocation: "South", //enums: north, south, central, off
+    img: "pictures/16.png",
+    address: "McColl Building, Chapel Hill, NC 27514",
+    building: "McColl Building (Kenan-Flagler Business School)",
+    floor: 4,
+    numRooms: 1,
+    public: true,
+    features: {
+        sink: false,
+        rockingChair: false,
+        outlet: true,
+        fridge: false,
+        changingStation: false
+    },
+    comments: [{
+        name: "Mary",
+        time: new Date(2019, 10, 10),
+        message: "Great location, very secluded"
+    }, {
+        name: "Elizabeth",
+        time: new Date(2019, 10, 10),
+        message: "Highly recommend, great space"
+    }]
+},{
+    id: 17,
+    campusLocation: "South", //enums: north, south, central, off
+    img: "pictures/17.png",
+    address: "111 Mason Farm Rd, Chapel Hill, NC 27599",
+    building: "Medical Biomolecular Research Building (MBRB)",
+    floor: 2,
+    numRooms: 1,
+    public: false,
+    features: {
+        sink: true,
+        rockingChair: false,
+        outlet: true,
+        fridge: true,
+        changingStation: true
+    },
+    comments: [{
+        name: "Brooklyn",
+        time: new Date(2019, 10, 10),
+        message: "Very well kept up with!"
+    }, {
+        name: "Kenna",
+        time: new Date(2019, 10, 10),
+        message: "Will definitely be coming back, very nice!"
+    }]
+},{
+    id: 18,
+    campusLocation: "Off", //enums: north, south, central, off
+    img: "pictures/18.png",
+    address: "100 Old Mason Farm Rd, Chapel Hill, NC 27517",
+    building: "NC Botanical Garden",
+    floor: 1,
+    numRooms: 1,
+    public: true,
+    features: {
+        sink: true,
+        rockingChair: false,
+        outlet: true,
+        fridge: true,
+        changingStation: false
+    },
+    comments: [{
+        name: "Catherine",
+        time: new Date(2019, 10, 10),
+        message: "Great location, very great amenities!"
+    }, {
+        name: "Leslie",
+        time: new Date(2019, 10, 10),
+        message: "The fridge was left cluttered."
+    }]
+},{
+    id: 19,
+    campusLocation: "Off", //enums: north, south, central, off
+    img: "pictures/19.png",
+    address: "208 W Franklin St, Chapel Hill, NC 27516",
+    building: "Office of University Development",
+    floor: 4,
+    numRooms: 1,
+    public: false,
+    features: {
+        sink: false,
+        rockingChair: false,
+        outlet: true,
+        fridge: false,
+        changingStation: false
+    },
+    comments: [{
+        name: "Amanda",
+        time: new Date(2019, 10, 10),
+        message: "Very easy to reach from campus!"
+    }, {
+        name: "Felicia",
+        time: new Date(2019, 10, 10),
+        message: "My go-to location"
+    }]
+},{
+    id: 20,
+    campusLocation: "South", //enums: north, south, central, off
+    img: "pictures/20.png",
+    address: "Rosenau Hall, Chapel Hill, NC 27516",
+    building: "Rosenau Hall (School of Public Health)",
+    floor: 2,
+    numRooms: 1,
+    public: false,
+    features: {
+        sink: true,
+        rockingChair: false,
+        outlet: true,
+        fridge: false,
+        changingStation: false
+    },
+    comments: [{
+        name: "Rose",
+        time: new Date(2019, 10, 10),
+        message: "Contact Brent, super easy to get access."
+    }, {
+        name: "Beth",
+        time: new Date(2019, 10, 10),
+        message: "Perfect place!"
+    }]
+},{
+    id: 21,
+    campusLocation: "Central", //enums: north, south, central, off
+    img: "pictures/21.png",
+    address: "150 South Rd, Chapel Hill, NC 27599",
+    building: "Sonja Haynes Stone Center",
+    floor: 1,
+    numRooms: 1,
+    public: true,
+    features: {
+        sink: false,
+        rockingChair: false,
+        outlet: true,
+        fridge: false,
+        changingStation: false
+    },
+    comments: [{
+        name: "Lana",
+        time: new Date(2019, 10, 10),
+        message: "Love the ladies in the Women's Center"
+    }, {
+        name: "Kara",
+        time: new Date(2019, 10, 10),
+        message: "Excellent space!"
+    }]
+},{
+    id: 22,
+    campusLocation: "Central", //enums: north, south, central, off
+    img: "pictures/22.png",
+    address: "207 South Rd, Chapel Hill, NC 27599",
+    building: "Student Stores",
+    floor: 3,
+    numRooms: 1,
+    public: true,
+    features: {
+        sink: true,
+        rockingChair: false,
+        outlet: true,
+        fridge: false,
+        changingStation: false
+    },
+    comments: [{
+        name: "Katie",
+        time: new Date(2019, 10, 10),
+        message: "Very secluded and comfortable!"
+    }, {
+        name: "Maddie",
+        time: new Date(2019, 10, 10),
+        message: "Convenient to get access."
+    }]
+},{
+    id: 23,
+    campusLocation: "Central", //enums: north, south, central, off
+    img: "pictures/23.png",
+    address: "325 Pittsboro St, Chapel Hill, NC 27516",
+    building: "Tate-Turner-Kuralt",
+    floor: 2,
+    numRooms: 1,
+    public: true,
+    features: {
+        sink: false,
+        rockingChair: false,
+        outlet: true,
+        fridge: false,
+        changingStation: false
+    },
+    comments: [{
+        name: "Bailey",
+        time: new Date(2019, 10, 10),
+        message: "I go there every other day and it's great!"
+    }, {
+        name: "Maddie",
+        time: new Date(2019, 10, 10),
+        message: "Definitely appreciate this location"
+    }]
+},{
+    id: 23,
+    campusLocation: "Central", //enums: north, south, central, off
+    img: "pictures/23.png",
+    address: "325 Pittsboro St, Chapel Hill, NC 27516",
+    building: "Tate-Turner-Kuralt",
+    floor: 2,
+    numRooms: 1,
+    public: true,
+    features: {
+        sink: false,
+        rockingChair: false,
+        outlet: true,
+        fridge: false,
+        changingStation: false
+    },
+    comments: [{
+        name: "Bailey",
+        time: new Date(2019, 10, 10),
+        message: "I go there every other day and it's great!"
+    }, {
+        name: "Maddie",
+        time: new Date(2019, 10, 10),
+        message: "Definitely appreciate this location"
+    }]
+},{
+    id: 24,
+    campusLocation: "South", //enums: north, south, central, off
+    img: "pictures/24.png",
+    address: "211 Branson St, Chapel Hill, NC 27514",
+    building: "(Carolina) Veterans Resource Center",
+    floor: 1,
+    numRooms: 1,
+    public: true,
+    features: {
+        sink: true,
+        rockingChair: false,
+        outlet: true,
+        fridge: true,
+        changingStation: false
+    },
+    comments: [{
+        name: "Marissa",
+        time: new Date(2019, 10, 10),
+        message: "Excellent space"
+    }, {
+        name: "Lela",
+        time: new Date(2019, 10, 10),
+        message: "Great space for me and my baby!"
+    }]
+},{
+    id: 25,
+    campusLocation: "South", //enums: north, south, central, off
+    img: "pictures/25.png",
+    address: "110 South Road, Chapel Hill, NC 27514",
+    building: "Wilson Hall",
+    floor: 0,
+    numRooms: 1,
+    public: true,
+    features: {
+        sink: true,
+        rockingChair: false,
+        outlet: true,
+        fridge: false,
+        changingStation: true
+    },
+    comments: [{
+        name: "Kendall",
+        time: new Date(2019, 10, 10),
+        message: "Felt very comfortable in this space, definitely recommend"
+    }, {
+        name: "Anna",
+        time: new Date(2019, 10, 10),
+        message: "Open to all!"
     }]
 }];
