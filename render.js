@@ -8,7 +8,7 @@ export const renderLactationRoom = function(room) {
     let box = `<div class="container box section" id="${room.id}Room"><span><img src="${img}" style="max-width:430px; max-height:300px;"><h1 class="title is-1"}>Lactation Room in ${room.building}</h1></span>`;
     let location = `<div style="background-color: white;"><h3 class="subtitle">Room is on ${room.campusLocation} Campus, in ${room.building} on floor ${room.floor}.</h3><p><em>Address:</em> ${room.address}</p>`;
     let ammenities = `<p><em>Amenitites:</em>`+ makeAmmenities(room.features) +`</p>`;
-    let comments = `<br><p><strong>Comments:</strong></p>` + makeComments(room.comments);
+    let comments = `<br><p><strong>Comments:</strong></p>` + makeComments(room.comments, room) + `<div id="addingComments${room.id}"></div>`;
     // TODO add a button for get directions that will tie in map api
     let button = `<button id="${room.id}Button" class="button" style="background-color:black; color: white; margin-top: 10px;">Comment about this Room</button>`;
     let dir_button = `<button id="${room.id}Directions" class="button" style="background-color:black; color: white; margin-top: 10px;">Get directions to this Room</button>`;
@@ -16,7 +16,7 @@ export const renderLactationRoom = function(room) {
     return box + location + ammenities + comments + button + dir_button + close;
 };
 
-export const makeComments = function(comments) {
+export const makeComments = function(comments, room) {
     let results = ``;
     comments.forEach(comment => {
         results = results + `<article class="media" style="background-color: lightgrey; padding: 10px; margin: 3px;">
@@ -70,6 +70,27 @@ export const handleAddCommentButton = function(event) {
     //TODO: see info on bulma on how to create this UI https://bulma.io/documentation/layout/media-object/
     console.log("comment button pressed");
     //need to add media form and then add submit button --> handle submit and update data 
+    const $comments = $('#addingComments'+event.data.id);
+    let commentAddHtml = `
+    <article class="media" style="background-color: lightgrey; padding: 10px; margin: 3px;">
+    <div class="media-content">
+        <div class="field">
+        <p class="control">
+            <textarea class="textarea" placeholder="Add a comment..."></textarea>
+        </p>
+        </div>
+        <nav class="level">
+        <div class="level-left">
+            <div class="level-item">
+            <a class="button is-info">Submit</a>
+            </div>
+            <div class="level-item">
+            <a class="button is-info">Cancel</a>
+            </div>
+        </div>
+        </nav>
+    </div></article>`;
+    $comments.append(commentAddHtml);
 }
 
 export const handleGetDirectionsButton = function(event) {
