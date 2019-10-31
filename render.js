@@ -11,7 +11,7 @@ export const renderLactationRoom = function(room) {
     let comments = `<br><p><strong>Comments:</strong></p>` + makeComments(room.comments);
     // TODO add a button for get directions that will tie in map api
     let button = `<button id="${room.id}Button" class="button" style="background-color:black; color: white; margin-top: 10px;">Comment about this Room</button>`;
-    let dir_button = `<button id="${room.id}Button" class="button" style="background-color:black; color: white; margin-top: 10px;">Get directions to this Room</button>`;
+    let dir_button = `<button id="${room.id}Directions" class="button" style="background-color:black; color: white; margin-top: 10px;">Get directions to this Room</button>`;
     let close = `</div>`;
     return box + location + ammenities + comments + button + dir_button + close;
 };
@@ -68,7 +68,12 @@ export const searchLacationRooms = function(event) {
 
 export const handleAddCommentButton = function(event) {
     //TODO: see info on bulma on how to create this UI https://bulma.io/documentation/layout/media-object/
-    
+    console.log("comment button pressed");
+
+}
+
+export const handleGetDirectionsButton = function(event) {
+    console.log("directions button pressed");
 }
 
 export const loadRoomsIntoDOM = function(lactationData) {
@@ -85,6 +90,7 @@ export const loadRoomsIntoDOM = function(lactationData) {
         $root.append(result);
         //set listeners for each added element
         $(`#${room.id}Button`).on("click", null, room, handleAddCommentButton);
+        $(`#${room.id}Directions`).on("click", null, room, handleGetDirectionsButton);
     });
     $(`#searchButton`).on("click", searchLacationRooms);
 };
