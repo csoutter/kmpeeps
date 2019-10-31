@@ -72,7 +72,7 @@ export const handleAddCommentButton = function(event) {
     //need to add media form and then add submit button --> handle submit and update data 
     const $comments = $('#addingComments'+event.data.id);
     let commentAddHtml = `
-    <article class="media" style="background-color: lightgrey; padding: 10px; margin: 3px;">
+    <article class="media" style="background-color: lightgrey; padding: 10px; margin: 3px;" id="commentCode${event.data.id}">
     <div class="media-content">
         <div class="field">
         <p class="control">
@@ -85,12 +85,13 @@ export const handleAddCommentButton = function(event) {
             <a class="button is-info">Submit</a>
             </div>
             <div class="level-item">
-            <a class="button is-info">Cancel</a>
+            <a class="button is-info" id="${event.data.id}CommentCancel">Cancel</a>
             </div>
         </div>
         </nav>
     </div></article>`;
     $comments.append(commentAddHtml);
+    $(`#${event.data.id}CommentCancel`).on("click", null, event.data, handleCancelCommentButton);
 }
 
 export const handleGetDirectionsButton = function(event) {
@@ -98,6 +99,14 @@ export const handleGetDirectionsButton = function(event) {
     console.log(event.data);
     let address = event.data.address;
     // google api
+}
+
+export const handleCancelCommentButton = function(event) {
+    // console.log("cancel comment");
+    let commentCode = document.getElementById('commentCode'+event.data.id);
+    // console.log(commentCode);
+    commentCode.remove();
+    
 }
 
 export const loadRoomsIntoDOM = function(lactationData) {
