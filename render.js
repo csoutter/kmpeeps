@@ -69,11 +69,14 @@ export const searchLacationRooms = function(event) {
 export const handleAddCommentButton = function(event) {
     //TODO: see info on bulma on how to create this UI https://bulma.io/documentation/layout/media-object/
     console.log("comment button pressed");
-
+    //need to add media form and then add submit button --> handle submit and update data 
 }
 
 export const handleGetDirectionsButton = function(event) {
     console.log("directions button pressed");
+    console.log(event.data);
+    let address = event.data.address;
+    // google api
 }
 
 export const loadRoomsIntoDOM = function(lactationData) {

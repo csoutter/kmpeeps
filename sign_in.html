@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Lactation Location</title>
+
+        <!-- Include links to CSS stylesheets below -->
+        <link rel="stylesheet" href="node_modules/bulma/css/bulma.css">
+    </head>
+
+    <body>
+        <div id="root">
+            <section class="hero is-info">
+                <div class="hero-body">
+                    <div class="container">
+                        <button class="button" style="background-color:black; color: white; margin-top: 10px; float: right;">Sign In</button>
+                        <h1 class="title"><strong><a href="index.html" style="text-decoration: none; color: white;">Lactation Location</a></strong></h1>
+                        <h2 class="subtitle">A woman's guide to finding a close lacation room while on UNC's campus.</h2>
+                        <div class="field is-grouped">
+                            <p class="control is-expanded">
+                                <input class="input" id="searchBar" type="text" placeholder="Find a lactation room (ex. 'North Campus', 'Sitterson')">
+                            </p>
+                            <p class="control" id="searchButton">
+                                <a class="button is-dark">Search</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="container section" style="padding:10px;">
+                <div class="columns">
+                    <!-- Include links to JavaScript files below -->
+                    <script src="node_modules/jquery/dist/jquery.js"></script>
+                    <script src="data.js"></script>
+                    <!-- <script src="render.js" type="module"></script> -->
+                </div>
+            </div>
+        </div>
+        <footer class="footer" style="padding:20px !important; background-color:lightgray; margin-top: 20px;">
+            <div class="content has-text-centered">
+                <p><strong>KMPeeps' Lacation Location</strong> created by Abby Brosnan, Jessica Davis, and Cassidy Soutter.</p>
+            </div>
+        </footer>
+    </body>
+</html>
