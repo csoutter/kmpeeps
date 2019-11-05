@@ -68,21 +68,19 @@ export const searchLacationRooms = function(event) {
 
 export const handleAddCommentButton = function(event) {
     //TODO: see info on bulma on how to create this UI https://bulma.io/documentation/layout/media-object/
-    console.log("comment button pressed");
-    //need to add media form and then add submit button --> handle submit and update data 
     const $comments = $('#addingComments'+event.data.id);
     let commentAddHtml = `
     <article class="media" style="background-color: lightgrey; padding: 10px; margin: 3px;" id="commentCode${event.data.id}">
     <div class="media-content">
         <div class="field">
-        <p class="control">
-            <textarea class="textarea" placeholder="Add a comment..."></textarea>
+        <p class="control" id="${event.data.id}CommentForm">
+            <textarea class="textarea" placeholder="Add a comment..." name="commentText"></textarea>
         </p>
         </div>
         <nav class="level">
         <div class="level-left">
             <div class="level-item">
-            <a class="button is-info">Submit</a>
+            <a class="button is-info" id="${event.data.id}CommentSubmit">Submit</a>
             </div>
             <div class="level-item">
             <a class="button is-info" id="${event.data.id}CommentCancel">Cancel</a>
@@ -92,6 +90,7 @@ export const handleAddCommentButton = function(event) {
     </div></article>`;
     $comments.append(commentAddHtml);
     $(`#${event.data.id}CommentCancel`).on("click", null, event.data, handleCancelCommentButton);
+    $(`#${event.data.id}CommentSubmit`).on("click", null, event.data, handleSubmitCommentButton);
 }
 
 export const handleGetDirectionsButton = function(event) {
@@ -102,11 +101,31 @@ export const handleGetDirectionsButton = function(event) {
 }
 
 export const handleCancelCommentButton = function(event) {
-    // console.log("cancel comment");
     let commentCode = document.getElementById('commentCode'+event.data.id);
-    // console.log(commentCode);
     commentCode.remove();
-    
+}
+
+export const handleSubmitCommentButton = function(event) {
+    let room = event.data;
+    let values = {};
+    let $inputs = $(`#${event.data.id}CommentForm :input`);
+    $inputs.each(function() {
+        values[this.name] = $(this).val();
+    });
+    let originalRoom = lactationData[room.id - 1];
+    let numOfComments = originalRoom.comments.length;
+    originalRoom.comments[numOfComments] = {
+        name: "",
+        time: new Date(),
+        message: values.commentText
+    };
+    let newComment = []; 
+    newComment[0] = originalRoom.comments[numOfComments];
+    let $comments = $('#addingComments'+event.data.id);
+    $comments.replaceWith(makeComments(newComment, event.data));
+    //BUG: comment button after adding a comment doesn't work anymore
+    //BUG: need to fix the name portion to come from user's info
+    $(`#${event.data.id}Button`).on("click", null, room, handleAddCommentButton);
 }
 
 export const loadRoomsIntoDOM = function(lactationData) {
