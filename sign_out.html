@@ -3,11 +3,11 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         <title>Lactation Location</title>
 
         <!-- Include links to CSS stylesheets below -->
         <link rel="stylesheet" href="node_modules/bulma/css/bulma.css">
-        <link rel="icon" href="pictures/mother.png">
     </head>
 
     <body>
@@ -15,8 +15,7 @@
             <section class="hero is-info">
                 <div class="hero-body">
                     <div class="container">
-                        <button class="button" id="sign_in" style="background-color:black; color: white; margin-top: 10px; float: right; text-decoration: none;"><a href="sign_in.html" style="color: white; text-decoration: none;">Sign In</a></button>
-                        <button class="button" id="sign_out" style="background-color:black; color: white; margin-top: 10px; float: right; text-decoration: none;"><a href="sign_out.html" style="color: white; text-decoration: none;">Sign Out</a></button>
+                        <button class="button" style="background-color:black; color: white; margin-top: 10px; float: right;">Sign In</button>
                         <h1 class="title"><strong><a href="index.html" style="text-decoration: none; color: white;">Lactation Location</a></strong></h1>
                         <h2 class="subtitle">A woman's guide to finding a close lacation room while on UNC's campus.</h2>
                         <div class="field is-grouped">
@@ -35,7 +34,7 @@
                     <!-- Include links to JavaScript files below -->
                     <script src="node_modules/jquery/dist/jquery.js"></script>
                     <script src="data.js"></script>
-                    <script src="render.js" type="module"></script>
+                    <!-- <script src="render.js" type="module"></script> -->
                 </div>
             </div>
         </div>
@@ -44,16 +43,5 @@
                 <p><strong>KMPeeps' Lacation Location</strong> created by Abby Brosnan, Jessica Davis, and Cassidy Soutter.</p>
             </div>
         </footer>
-        <script>
-            let signed_in = false;
-            if (signed_in) {
-                document.getElementById("sign_in").style.visibility = "hidden";
-                document.getElementById("sign_out").style.visibility = "show";
-                document.getElementById("sign_in").replaceWith(document.getElementById("sign_out"));
-            } else {
-                document.getElementById("sign_in").style.visibility = "show";
-                document.getElementById("sign_out").style.visibility = "hidden";
-            }
-        </script>
     </body>
 </html>
