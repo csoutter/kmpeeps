@@ -35,7 +35,7 @@ export const loadSignInForm = function() {
         </div>
     
         <div class="container" style="background-color:#f1f1f1">
-            <button type="button" class="button cancelbtn" id="cancelButton">Cancel</button>
+            <button type="button" class="button cancelbtn" id="cancelButton"><a href="index.html" style="text-decoration: none; color: white;">Cancel</a></button>
         </div>
     </form>
     `;
