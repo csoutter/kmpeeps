@@ -1,26 +1,37 @@
-export const handleCancelSignIn = function(event) {
-    //go back to index.html
-}
-
-export const handleSubmitSignIn = function(event) {
+export const handleSubmitSignIn = async function(event) {
     //go back to index.html with proper permissions or throw error/alert message
+
+    event.preventDefault();
+
+    console.log("hello")
+/*
+    const response = await axios({
+        method: "post",
+        url: "http://localhost:3000/account/create",
+        withCredentials: true,
+        body: {
+            username: $(`#uname`).val(),
+            password: $(`#pswrd`).val()
+        }
+    });*/
+    window.location.href = "http://localhost:3000/index.html"
 }
 
 export const loadSignInForm = function() {
     // Grab a jQuery reference to the root HTML element
     const $root = $('#root');
     const form = `
-    <form class="container"action="action_page.php" method="post">
+    <form class="container">
         <div class="container imgcontainer">
             <img src="pictures/user.png" alt="Avatar" class="avatar">
         </div>
     
         <div class="container">
             <label for="uname"><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="uname" required>
+            <input type="text" placeholder="Enter Username" name="uname" id="uname" required>
         
             <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" required>
+            <input type="password" placeholder="Enter Password" name="psw" id="pswrd" required>
         
             <button class="button_signIn" type="submit" id="signInButton">Login</button>
             <label>
@@ -37,8 +48,7 @@ export const loadSignInForm = function() {
     `;
     $root.append(form);
     //set listeners for each added element
-    $(`#signInButton`).on("click", null, room, handleSubmitSignIn);
-    $(`#cancelButton`).on("click", null, room, handleCancelSignIn);
+    $(`#signInButton`).on("click", null, null, handleSubmitSignIn);
 };
 
 $(function() {

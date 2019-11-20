@@ -18,7 +18,7 @@ export const renderLactationRoom = function(room) {
     let button = `<button id="${room.id}Button" class="button" style="background-color:black; color: white; margin-top: 10px;">Comment about this Room</button>`;
     let dir_button = `<button id="${room.id}Directions" class="button" style="background-color:black; color: white; margin-top: 10px;">Get directions to this Room</button>`;
     let close = `</div>`;
-    return box + location + ammenities + comments + button + dir_button + close;
+    return box + location + ammenities + comments + dir_button + button + close;
 };
 
 export const makeComments = function(comments, room) {
