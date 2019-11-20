@@ -132,16 +132,6 @@
                 <p><strong>KMPeeps' Lacation Location</strong> created by Abby Brosnan, Jessica Davis, and Cassidy Soutter.</p>
             </div>
         </footer>
-        <script>
-            let signed_in = false;
-            if (signed_in) {
-                document.getElementById("sign_in").style.visibility = "hidden";
-                document.getElementById("sign_out").style.visibility = "show";
-                document.getElementById("sign_in").replaceWith(document.getElementById("sign_out"));
-            } else {
-                document.getElementById("sign_in").style.visibility = "show";
-                document.getElementById("sign_out").style.visibility = "hidden";
-            }
-        </script>
+        <script src="permissions.js" type="module"></script>
     </body>
 </html>
