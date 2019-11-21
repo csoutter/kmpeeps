@@ -1,7 +1,7 @@
-function signInPermissions() {
-    const account_status = getAccountStatus();
-    let account_type = account_status.data.account_type;
-        if (account_type == "user" || account_type == "private") {
+/*function signInPermissions() {
+    //const account_status = getAccountStatus();
+    //let account_type = account_status.data.;
+        if (signed_in) {
             document.getElementById("sign_in").style.visibility = "hidden";
             document.getElementById("sign_out").style.visibility = "show";
             document.getElementById("sign_in").replaceWith(document.getElementById("sign_out"));
@@ -10,7 +10,9 @@ function signInPermissions() {
             document.getElementById("sign_out").style.visibility = "hidden";            
         }
 }
+*/
 
+/*
 export const getAccountStatus = async function() {
     /*
     const response = await axios({
@@ -21,8 +23,9 @@ export const getAccountStatus = async function() {
     
     return response;*/
 
-}
+//}
 
+/*
 $(function() {
     signInPermissions();
-});
+});*/

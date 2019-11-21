@@ -13,7 +13,7 @@ const debugAutoWire = debug('auto-wire');
 const debugAutoWireWarning = debug('auto-wire-warning');
 
 const app = express();
-var cors = require('cors');
+//var cors = require('cors');
 app.use(cors());
 
 app.use(require('morgan')('dev'));

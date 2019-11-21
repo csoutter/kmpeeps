@@ -14,7 +14,7 @@ export const handleSubmitSignIn = async function(event) {
             password: $(`#pswrd`).val()
         }
     });*/
-    window.location.href = "http://localhost:3000/index.html"
+    window.location.href = "http://localhost:3001/index.html"
 }
 
 export const loadSignInForm = function() {

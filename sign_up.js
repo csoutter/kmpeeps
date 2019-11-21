@@ -3,22 +3,22 @@ export const handleCreateAccount = async function(event) {
 
     event.preventDefault();
 
-    console.log("hello")
-    /*
-    const response = await axios({
+    console.log($(`#pswrd`).val())
+    
+    await axios({
         method: "post",
         url: "http://localhost:3000/account/create",
-        withCredentials: true,
-        body: {
+        //withCredentials: false,
+        data: {
             first: $(`#fname`).val(),
             last: $(`#lname`).val(),
             username: $(`#uname`).val(),
             password: $(`#pswrd`).val(),
             account_type: "user"
         }
-    });*/
+    });
 
-    window.location.href = "http://localhost:3000/index.html"
+    window.location.href = "http://localhost:3001/index.html"
 
     //window.location = "index.html"
 
