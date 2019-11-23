@@ -20,14 +20,18 @@
                         <button class="button" id="sign_out" style="background-color:black; color: white; margin-top: 10px; float: right; text-decoration: none;"><a href="sign_out.html" style="color: white; text-decoration: none;">Sign Out</a></button>
                         <h1 class="title"><strong><a href="index.html" style="text-decoration: none; color: white;">Lactation Location</a></strong></h1>
                         <h2 class="subtitle">A woman's guide to finding a close lacation room while on UNC's campus.</h2>
-                        <div class="field is-grouped">
+                        <form autocomplete="off" action="/action_page.php">
+                        <div class="autocomplete" style="width:300px;"></div>
+                            <div class="field is-grouped">
                             <p class="control is-expanded">
                                 <input class="input" id="searchBar" type="text" placeholder="Find a lactation room (ex. 'North Campus', 'Sitterson')">
+                            </div>
                             </p>
                             <p class="control" id="searchButton">
                                 <a class="button is-dark">Search</a>
                             </p>
                         </div>
+                    </form>
                     </div>
                 </div>
             </section>
@@ -48,5 +52,85 @@
         </footer>
         <script src="permissions.js" type="module"></script>
         <script src="test.js" type="module"></script>
+        <script> 
+        function autocomplete(inp, arr) {
+            var currentFocus;
+            inp.addEventListener("input", function(e) {
+                var a, b, i, val = this.value;
+                closeAllLists();
+                if (!val) { return false;}
+                currentFocus = -1;
+                a = document.createElement("DIV");
+                a.setAttribute("id", this.id + "autocomplete-list");
+                a.setAttribute("class", "autocomplete-items");
+                this.parentNode.appendChild(a);
+                for (i = 0; i < arr.length; i++) {
+                    if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                        b = document.createElement("DIV");
+                        b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                        b.innerHTML += arr[i].substr(val.length);
+                        b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                            b.addEventListener("click", function(e) {
+                            inp.value = this.getElementsByTagName("input")[0].value;
+                            closeAllLists();
+                        });
+                        a.appendChild(b);
+                    }
+                }
+            });
+            inp.addEventListener("keydown", function(e) {
+                var x = document.getElementById(this.id + "autocomplete-list");
+                if (x) x = x.getElementsByTagName("div");
+                if (e.keyCode == 40) {
+                    currentFocus++;
+                    addActive(x);
+                } else if (e.keyCode == 38) { 
+                    currentFocus--;
+                    addActive(x);
+                } else if (e.keyCode == 13) {
+                    e.preventDefault();
+                    if (currentFocus > -1) {
+                        if (x) x[currentFocus].click();
+                    }
+                }
+            });
+            function addActive(x) {
+                if (!x) return false;
+                removeActive(x);
+                if (currentFocus >= x.length) currentFocus = 0;
+                if (currentFocus < 0) currentFocus = (x.length - 1);
+                x[currentFocus].classList.add("autocomplete-active");
+            }
+            function removeActive(x) {
+                for (var i = 0; i < x.length; i++) {
+                    x[i].classList.remove("autocomplete-active");
+                }
+            }
+            function closeAllLists(elmnt) {
+                var x = document.getElementsByClassName("autocomplete-items");
+                for (var i = 0; i < x.length; i++) {
+                    if (elmnt != x[i] && elmnt != inp) {
+                    x[i].parentNode.removeChild(x[i]);
+                    }
+                }
+            }
+            document.addEventListener("click", function (e) {
+            closeAllLists(e.target);
+            });
+        }
+
+        var searchWords = ["North Campus", "Central Campus", "South Campus",
+        "Fred Brooks", "MacNider Hall", "Carolina Square", "Carolina Union", 
+        "Marsico Hall", "Carrington Hall", "Cheek-Clark Building", 
+        "FedEx Global Education Center", "First Dental bBilding", "Friday Center", 
+        "Genetic Medicine Building", "Genome Sciences Building",
+        "Giles Horney Building", "Hill Hall", "Mary Ellen Jones Building", 
+        "McColl Building", "Medical Biomolecular Research Building", 
+        "NC Botanical Garden", "Office of University Development", "Rosenau Hall", 
+        "Sonja Haynes Stone Center", "Student Stores", "Tate-Turner-Kuralt", 
+        "Carolina Veterans Resource Center", "Wilson Hall"];
+       
+        autocomplete(document.getElementById("searchBar"), searchWords);
+        </script>
     </body>
 </html>
