@@ -68,11 +68,28 @@ export const makeAmmenities = function(ammenities) {
 }
 
 export const searchLacationRooms = function(event) {
+    console.log("in search lactation rooms");
     event.preventDefault();
     let searchValue = {};
     let $inputs = $(`#searchBar :input`);
     $inputs.each(function() {
         searchValue[this.name] = $(this).val();
+    });
+}
+
+export const searchBar = function(e) {
+    const term = e.target.value.toLowerCase();
+    console.log("in searchBar");
+    Array.from(lactationData).forEach(function(room) {
+        console.log(room);
+        const searched = room.building;
+        if (searched.toLowerCase().indexOf(term) != -1) {
+            let html = document.getElementById(room.id+'Room');
+            html.style.display = 'block';
+        } else {
+            let html = document.getElementById(room.id+'Room');
+            html.style.display = 'none';
+        }
     });
 }
 
@@ -153,6 +170,7 @@ export const loadRoomsIntoDOM = function(lactationData) {
         $(`#${room.id}Directions`).on("click", null, room, handleGetDirectionsButton);
     });
     $(`#searchButton`).on("click", searchLacationRooms);
+    $(`#searchBar`).on("keyup", searchBar);
 };
 
 $(function() {
