@@ -28,4 +28,4 @@ export const getAccountStatus = async function() {
 /*
 $(function() {
     signInPermissions();
-});*/
+})*/
