@@ -14,7 +14,7 @@ export const renderLactationRoom = function(room) {
     let location = `<div style="background-color: white;"><h3 class="subtitle">Room is on ${room.campusLocation} Campus, in ${room.building} on floor ${room.floor}.</h3><p><em>Address:</em> ${room.address}</p>`;
     let ammenities = `<p><em>Amenitites:</em>`+ makeAmmenities(room.features) +`</p>`;
     let comments = `<br><p><strong>Comments:</strong></p>` + makeComments(room.comments, room) + `<div id="addingComments${room.id}"></div>`;
-    let button = `<button id="${room.id}Button" class="button" style="background-color:black; color: white; margin-top: 10px;">Comment about this Room</button>`;
+    let button = `<button id="${room.id}AddCommentButton" class="button" style="background-color:black; color: white; margin-top: 10px;visibility:hidden;">Comment about this Room</button>`;
     let dir_button = `<button id="${room.id}Directions" class="button" style="background-color:black; color: white; margin-top: 10px;">Get directions to this Room</button>`;
     let close = `</div>`;
     return box + location + ammenities + comments + dir_button + button + close;
@@ -106,6 +106,7 @@ export const handleAddCommentButton = function(event) {
 export const handleGetDirectionsButton = function(event) {
     console.log("directions button pressed");
     console.log(event.data);
+    window.location.hash = "";
     window.location.hash = "#directions";
 }
 
@@ -134,7 +135,7 @@ export const handleSubmitCommentButton = function(event) {
     $comments.replaceWith(makeComments(newComment, event.data));
     //BUG: comment button after adding a comment doesn't work anymore
     //BUG: need to fix the name portion to come from user's info
-    $(`#${event.data.id}Button`).on("click", null, room, handleAddCommentButton);
+    $(`#${event.data.id}AddCommentButton`).on("click", null, room, handleAddCommentButton);
 }
 
 export const loadRoomsIntoDOM = function(lactationData) {
@@ -149,7 +150,7 @@ export const loadRoomsIntoDOM = function(lactationData) {
         // add results to dom
         $root.append(result);
         //set listeners for each added element
-        $(`#${room.id}Button`).on("click", null, room, handleAddCommentButton);
+        $(`#${room.id}AddCommentButton`).on("click", null, room, handleAddCommentButton);
         $(`#${room.id}Directions`).on("click", null, room, handleGetDirectionsButton);
     });
     $(`#searchButton`).on("click", searchLacationRooms);
