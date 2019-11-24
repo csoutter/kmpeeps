@@ -4,12 +4,17 @@ const pubRoot = new axios.create({
   baseURL: "http://localhost:3000/public"
 });
 
+
+
 async function createAuthor({first = 'John', last = 'Doe', numBooks = 0}) {
+  console.log("hello")
   return await pubRoot.post(`/authors/`, {
     data: {first, last, numBooks}
   })
 }
 
+*/
+/*
 async function getAllAuthors() {
   return await pubRoot.get('/authors');
 }
