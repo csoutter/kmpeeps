@@ -1,11 +1,24 @@
+
+const pubRoot = new axios.create({
+    baseURL: "http://localhost:3000"
+});
+
 export const handleSubmitSignIn = async function(event) {
     //go back to index.html with proper permissions or throw error/alert message
 
     event.preventDefault();
 
     console.log("hello")
-/*
-    const response = await axios({
+    
+    return await pubRoot.post(`/account/create`, {
+        body: {
+            username: $(`#uname`).val(),
+            password: $(`#pswrd`).val()
+        }
+      })
+
+    /*
+    await axios({
         method: "post",
         url: "http://localhost:3000/account/create",
         withCredentials: true,
