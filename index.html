@@ -35,6 +35,22 @@
                     </div>
                 </div>
             </section>
+            <script>
+                // Initialize and add the map
+                function initMap() {
+                    var chapelHill = {lat: 35.9132, lng: -79.0558};
+                    // The map, centered at chapel hill
+                    var map = new google.maps.Map(
+                        document.getElementById('map'), {zoom: 14, center: chapelHill});
+                    lactationData.forEach(room => {
+                        var roomCoord = {lat: room.lat, lng: room.lng};
+                        var marker = new google.maps.Marker({position: roomCoord, map: map});
+                    });
+                }
+            </script>
+            <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMm5aIAjT3m0MSPEnM-aeZ8tYznHS0SGo&callback=initMap">
+            </script>
             <div class="container section" style="padding:10px;">
                 <div class="columns">
                     <!-- Include links to JavaScript files below -->
@@ -43,6 +59,13 @@
                     <script src="data.js"></script>
                     <script src="render.js" type="module"></script>
                 </div>
+            </div>
+            <div class="container box section" id="directions">
+                <div style="display:inline;">
+                    <img src="pictures/globe.png" style="width:60px;height:60px;float:left;margin-right:10px;">
+                    <h1 class="title is-1" style="color:#4B9CD3;">Find Directions</h1>
+                </div>
+                <div id="map"></div>
             </div>
         </div>
         <footer class="footer" style="padding:20px !important; background-color:lightgray; margin-top: 20px;">
@@ -131,6 +154,8 @@
         "Carolina Veterans Resource Center", "Wilson Hall"];
        
         autocomplete(document.getElementById("searchBar"), searchWords);
+        </script>
+
         </script>
     </body>
 </html>

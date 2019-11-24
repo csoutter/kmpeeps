@@ -14,12 +14,17 @@ export const renderLactationRoom = function(room) {
     let location = `<div style="background-color: white;"><h3 class="subtitle">Room is on ${room.campusLocation} Campus, in ${room.building} on floor ${room.floor}.</h3><p><em>Address:</em> ${room.address}</p>`;
     let ammenities = `<p><em>Amenitites:</em>`+ makeAmmenities(room.features) +`</p>`;
     let comments = `<br><p><strong>Comments:</strong></p>` + makeComments(room.comments, room) + `<div id="addingComments${room.id}"></div>`;
-    // TODO add a button for get directions that will tie in map api
     let button = `<button id="${room.id}Button" class="button" style="background-color:black; color: white; margin-top: 10px;">Comment about this Room</button>`;
     let dir_button = `<button id="${room.id}Directions" class="button" style="background-color:black; color: white; margin-top: 10px;">Get directions to this Room</button>`;
     let close = `</div>`;
     return box + location + ammenities + comments + dir_button + button + close;
 };
+
+export const makeMap = function(room) {
+    const html= `<div id="map${room.id}"></div>`;
+    initMap(room);
+    return html;
+}
 
 export const makeComments = function(comments, room) {
     let results = ``;
@@ -101,8 +106,7 @@ export const handleAddCommentButton = function(event) {
 export const handleGetDirectionsButton = function(event) {
     console.log("directions button pressed");
     console.log(event.data);
-    let address = event.data.address;
-    // google api
+    window.location.hash = "#directions";
 }
 
 export const handleCancelCommentButton = function(event) {
@@ -139,7 +143,6 @@ export const loadRoomsIntoDOM = function(lactationData) {
     let results = [];
 
     //TODO, either here or in index.html, add a sign in button; when not signed in shouldn't be able to add a comment
-
     lactationData.forEach(room => {
         let result = renderLactationRoom(room);
         results.push(result);
