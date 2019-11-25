@@ -11,7 +11,7 @@ export const renderLactationRoom = function(room) {
         //add empty star
     }*/
     let box = `<div class="container box section" id="${room.id}Room"><span><img src="${img}" style="max-width:430px; max-height:300px;"><h1 class="title is-1"}>Lactation Room in ${room.building}</h1></span>`;
-    let location = `<div style="background-color: white;"><h3 class="subtitle">Room is on ${room.campusLocation} Campus, in ${room.building} on floor ${room.floor}.</h3><p><em>Address:</em> ${room.address}</p>`;
+    let location = `<div style="background-color: white;"><h3 class="subtitle">Room is on ${room.campusLocation}, in ${room.building} on floor ${room.floor}.</h3><p><em>Address:</em> ${room.address}</p>`;
     let ammenities = `<p><em>Amenitites:</em>`+ makeAmmenities(room.features) +`</p>`;
     let comments = `<br><p><strong>Comments:</strong></p>` + makeComments(room.comments, room) + `<div id="addingComments${room.id}"></div>`;
     let button = `<button id="${room.id}AddCommentButton" class="button" style="background-color:black; color: white; margin-top: 10px;visibility:hidden;">Comment about this Room</button>`;
@@ -82,8 +82,9 @@ export const searchBar = function(e) {
     console.log("in searchBar");
     Array.from(lactationData).forEach(function(room) {
         console.log(room);
-        const searched = room.building;
-        if (searched.toLowerCase().indexOf(term) != -1) {
+        const searched_building = room.building;
+        const searched_location = room.campusLocation;
+        if (searched_building.toLowerCase().indexOf(term) != -1 | searched_location.toLowerCase().indexOf(term) != -1) {
             let html = document.getElementById(room.id+'Room');
             html.style.display = 'block';
         } else {
