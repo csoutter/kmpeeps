@@ -35,6 +35,43 @@
                     </div>
                 </div>
             </section>
+            <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+            <script>
+                mybutton = document.getElementById("myBtn");
+
+                // When the user scrolls down 20px from the top of the document, show the button
+                window.onscroll = function() {scrollFunction()};
+
+                function scrollFunction() {
+                    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                        mybutton.style.display = "block";
+                    } else {
+                        mybutton.style.display = "none";
+                    }
+                }
+
+                // When the user clicks on the button, scroll to the top of the document
+                function topFunction() {
+                    document.body.scrollTop = 0; // For Safari
+                    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+                }
+            </script>
+            <script>
+                // Initialize and add the map
+                function initMap() {
+                    var chapelHill = {lat: 35.9132, lng: -79.0558};
+                    // The map, centered at chapel hill
+                    var map = new google.maps.Map(
+                        document.getElementById('map'), {zoom: 14, center: chapelHill});
+                    lactationData.forEach(room => {
+                        var roomCoord = {lat: room.lat, lng: room.lng};
+                        var marker = new google.maps.Marker({position: roomCoord, map: map});
+                    });
+                }
+            </script>
+            <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMm5aIAjT3m0MSPEnM-aeZ8tYznHS0SGo&callback=initMap">
+            </script>
             <div class="container section" style="padding:10px;">
                 <div class="columns">
                     <!-- Include links to JavaScript files below -->
@@ -44,9 +81,16 @@
                     <script src="render.js" type="module"></script>
                     <script src="permissions.js" type="module"></script>
                     <script src="test.js" type="module"></script>
-                    <script src="sign_in.js" type="module"></script>
-                    <script src="sign_up.js" type="module"></script>
+                    <!-- <script src="sign_in.js" type="module"></script>
+                    <script src="sign_up.js" type="module"></script> -->
                 </div>
+            </div>
+            <div class="container box section" id="directions">
+                <div style="display:inline;">
+                    <img src="pictures/globe.png" style="width:60px;height:60px;float:left;margin-right:10px;">
+                    <h1 class="title is-1" style="color:#4B9CD3;">Find Directions</h1>
+                </div>
+                <div id="map"></div>
             </div>
         </div>
         <footer class="footer" style="padding:20px !important; background-color:lightgray; margin-top: 20px;">
@@ -130,9 +174,11 @@
         "McColl Building", "Medical Biomolecular Research Building", 
         "NC Botanical Garden", "Office of University Development", "Rosenau Hall", 
         "Sonja Haynes Stone Center", "Student Stores", "Tate-Turner-Kuralt", 
-        "Carolina Veterans Resource Center", "Wilson Hall"];
+        "Carolina Veterans Resource Center", "Wilson Hall", "Off Campus"];
        
         autocomplete(document.getElementById("searchBar"), searchWords);
+        </script>
+
         </script>
     </body>
 </html>

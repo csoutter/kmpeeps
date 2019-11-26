@@ -11,15 +11,20 @@ export const renderLactationRoom = function(room) {
         //add empty star
     }*/
     let box = `<div class="container box section" id="${room.id}Room"><span><img src="${img}" style="max-width:430px; max-height:300px;"><h1 class="title is-1"}>Lactation Room in ${room.building}</h1></span>`;
-    let location = `<div style="background-color: white;"><h3 class="subtitle">Room is on ${room.campusLocation} Campus, in ${room.building} on floor ${room.floor}.</h3><p><em>Address:</em> ${room.address}</p>`;
+    let location = `<div style="background-color: white;"><h3 class="subtitle">Room is on ${room.campusLocation}, in ${room.building} on floor ${room.floor}.</h3><p><em>Address:</em> ${room.address}</p>`;
     let ammenities = `<p><em>Amenitites:</em>`+ makeAmmenities(room.features) +`</p>`;
     let comments = `<br><p><strong>Comments:</strong></p>` + makeComments(room.comments, room) + `<div id="addingComments${room.id}"></div>`;
-    // TODO add a button for get directions that will tie in map api
-    let button = `<button id="${room.id}Button" class="button" style="background-color:black; color: white; margin-top: 10px;">Comment about this Room</button>`;
+    let button = `<button id="${room.id}AddCommentButton" class="button" style="background-color:black; color: white; margin-top: 10px;visibility:hidden;">Comment about this Room</button>`;
     let dir_button = `<button id="${room.id}Directions" class="button" style="background-color:black; color: white; margin-top: 10px;">Get directions to this Room</button>`;
     let close = `</div>`;
     return box + location + ammenities + comments + dir_button + button + close;
 };
+
+export const makeMap = function(room) {
+    const html= `<div id="map${room.id}"></div>`;
+    initMap(room);
+    return html;
+}
 
 export const makeComments = function(comments, room) {
     let results = ``;
@@ -63,11 +68,29 @@ export const makeAmmenities = function(ammenities) {
 }
 
 export const searchLacationRooms = function(event) {
+    console.log("in search lactation rooms");
     event.preventDefault();
     let searchValue = {};
     let $inputs = $(`#searchBar :input`);
     $inputs.each(function() {
         searchValue[this.name] = $(this).val();
+    });
+}
+
+export const searchBar = function(e) {
+    const term = e.target.value.toLowerCase();
+    console.log("in searchBar");
+    Array.from(lactationData).forEach(function(room) {
+        console.log(room);
+        const searched_building = room.building;
+        const searched_location = room.campusLocation;
+        if (searched_building.toLowerCase().indexOf(term) != -1 | searched_location.toLowerCase().indexOf(term) != -1) {
+            let html = document.getElementById(room.id+'Room');
+            html.style.display = 'block';
+        } else {
+            let html = document.getElementById(room.id+'Room');
+            html.style.display = 'none';
+        }
     });
 }
 
@@ -101,8 +124,8 @@ export const handleAddCommentButton = function(event) {
 export const handleGetDirectionsButton = function(event) {
     console.log("directions button pressed");
     console.log(event.data);
-    let address = event.data.address;
-    // google api
+    window.location.hash = "";
+    window.location.hash = "#directions";
 }
 
 export const handleCancelCommentButton = function(event) {
@@ -130,7 +153,7 @@ export const handleSubmitCommentButton = function(event) {
     $comments.replaceWith(makeComments(newComment, event.data));
     //BUG: comment button after adding a comment doesn't work anymore
     //BUG: need to fix the name portion to come from user's info
-    $(`#${event.data.id}Button`).on("click", null, room, handleAddCommentButton);
+    $(`#${event.data.id}AddCommentButton`).on("click", null, room, handleAddCommentButton);
 }
 
 export const loadRoomsIntoDOM = function(lactationData) {
@@ -139,17 +162,17 @@ export const loadRoomsIntoDOM = function(lactationData) {
     let results = [];
 
     //TODO, either here or in index.html, add a sign in button; when not signed in shouldn't be able to add a comment
-
     lactationData.forEach(room => {
         let result = renderLactationRoom(room);
         results.push(result);
         // add results to dom
         $root.append(result);
         //set listeners for each added element
-        $(`#${room.id}Button`).on("click", null, room, handleAddCommentButton);
+        $(`#${room.id}AddCommentButton`).on("click", null, room, handleAddCommentButton);
         $(`#${room.id}Directions`).on("click", null, room, handleGetDirectionsButton);
     });
     $(`#searchButton`).on("click", searchLacationRooms);
+    $(`#searchBar`).on("keyup", searchBar);
 };
 
 $(function() {

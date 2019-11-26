@@ -5,9 +5,15 @@
             document.getElementById("sign_in").style.visibility = "hidden";
             document.getElementById("sign_out").style.visibility = "show";
             document.getElementById("sign_in").replaceWith(document.getElementById("sign_out"));
+            lactationData.forEach(room => {
+                document.getElementById(room.id+"AddCommentButton").style.visbility = "show";
+            });
         } else {
             document.getElementById("sign_in").style.visibility = "show";
-            document.getElementById("sign_out").style.visibility = "hidden";            
+            document.getElementById("sign_out").style.visibility = "hidden";  
+            lactationData.forEach(room => {
+                document.getElementById(room.id+"AddCommentButton").style.visbility = "hidden";
+            });          
         }
 }
 
