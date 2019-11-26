@@ -1,2 +1,75 @@
 {
+  "users": {
+    "j": {
+      "passwordHash": "$2b$10$OPzKhNOyhr0woJD/NYaWoOiWdjYvY9mtiaDOqGP/DFwg7gp0XLsR."
+    },
+    "name": {
+      "passwordHash": "$2b$10$AP7IRB4RkpC9vSD43TLeJ.71zCiGllqilyT0ZPnERMw.e2zBFdk6e",
+      "data": {
+        "other": "data",
+        "pets_name": "petty"
+      }
+    },
+    "jess": {
+      "passwordHash": "$2b$10$WIw717c2JaOtPbhh4B9iV.w6aSHDZfxSHl3opqk8T5CnMGIfMMBGi",
+      "data": {
+        "other": "data",
+        "pets_name": "petty"
+      }
+    },
+    "cass": {
+      "passwordHash": "$2b$10$Wd2zC.4RS.dTns3j.D1K1.s2x5WC41aP8rroRKkLHnprlee9faudu"
+    },
+    "lex": {
+      "passwordHash": "$2b$10$SQQ7vHbeRe/0M.Z5XD4WFuV9HmnaRrRKjlJb6elQs231Ylsq.QjQ6"
+    },
+    "avv": {
+      "passwordHash": "$2b$10$ka57FErP8QwiSdPAYNjJ4efpzT4S1cTe3SEr0qA7iH.tRrwkNgBIW"
+    },
+    "kdk": {
+      "passwordHash": "$2b$10$U8x4W7zOWk.rVB3UNow2/ONMPiCbrIHYpmpaDUQP68E411rqCacoC"
+    },
+    "all": {
+      "passwordHash": "$2b$10$ZXO6SINjX6BmmmDdvjBHbePkQyorn8NwL146IQ2btNq/0LB2Qgvda"
+    },
+    "$(`#uname-signin`)": {
+      "val()": {
+        "passwordHash": "$2b$10$DdHRTW4mqSCJjhrQBGvFTecEt.zlmeIrgSLptpEu3hGjFshevRITu"
+      }
+    },
+    "alla": {
+      "passwordHash": "$2b$10$S4FS.esujCfXBKCmnp5CKuElUvselOyKotlL/9dcjUuSdZrJ.llbW"
+    },
+    "akak": {
+      "passwordHash": "$2b$10$Olm386n9o.vQCyzp3N3MwupaV/e/pXwkg8PHrp2gAbxiQeLTSFqlK"
+    },
+    "eklnk": {
+      "passwordHash": "$2b$10$6eDoXjALFinOTYyVvYObgut5pAlYX0Easvt1JC.3g55.L3XuYZTvm"
+    },
+    "lkanfjsa;": {
+      "passwordHash": "$2b$10$qZNEbJVZhskfAmY0g02ty.U3kC3x/0XqiHlIoNc/DtIHhpEhQXCGq"
+    },
+    "kal;": {
+      "passwordHash": "$2b$10$7xkQb2gON2o.wtmt6w/e9um8WeHj7jM/t7Wmc740QoqJvzDYn7bBW"
+    },
+    "undefined": {
+      "passwordHash": "$2b$10$4zjSFsJ5pOYF0V1cg7Z3gOxPia8oxDzewGVfnYp4lhkYBpunnhjKi"
+    },
+    "test": {
+      "passwordHash": "$2b$10$XwOFka08mpS3Ahk5RcgA6.7HdzYnhtm.vGXpnFvyKJLf6I93yCxPm",
+      "data": {
+        "fname": "TEST",
+        "lname": "TEST",
+        "account_type": "user"
+      }
+    },
+    "testuser": {
+      "passwordHash": "$2b$10$biwBs3nEqCqyS9C.NmS84.khcc5WWBrRI/niE0K1.B3GkTg0PWTnS",
+      "data": {
+        "fname": "testuser",
+        "lname": "testuser",
+        "account_type": "user"
+      }
+    }
+  }
 }

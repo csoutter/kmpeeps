@@ -4,7 +4,7 @@ export const handleCreateAccount = async function(event) {
     event.preventDefault();
 
     console.log($(`#pswrd`).val())
-    
+    /*
     await axios({
         method: "post",
         url: "http://localhost:3000/account/create",
@@ -16,6 +16,22 @@ export const handleCreateAccount = async function(event) {
             password: $(`#pswrd`).val(),
             account_type: "user"
         }
+    });*/
+
+    let r = axios.post('http://localhost:3000/account/create', {
+        name: "" + $(`#uname`).val() + "",
+        pass: "" + $(`#pswrd`).val() + "",
+        data: {
+            fname: "" + $(`#fname`).val() + "",
+            lname: "" + $(`#lname`).val() + "",
+            account_type: "user"
+        }
+    });
+
+    r.then(response => {
+        console.log(response.data);
+    }).catch(error => {
+        console.log(error);
     });
 
     window.location.href = "http://localhost:3001/index.html"
