@@ -20,7 +20,6 @@
 
 
 export const getAccountStatus = async function() {
-    
     const response = await axios({
         method: "get",
         url: "http://localhost:3000/account/status",
@@ -32,8 +31,9 @@ export const getAccountStatus = async function() {
     let r = axios.get('http://localhost:3000/account/status',
         {
             headers: {
-                'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiY2hyaXMiLCJkYXRhIjp7InJvbGUiOjIsImRlc2NyaXB0aW9uIjoiTGF6eS4uLiJ9LCJpYXQiOjE1Njk5MDE4OTcsImV4cCI6MTU3MjQ5Mzg5N30.DRZZQw2Hfex7Z7E_SAcgtUfRk1C-wVmauyMXqG3SrB0`
-              }
+                //jwt is the jwt from logging in
+                    "Authorization": "Bearer " + jwt
+            },
             
         });
 

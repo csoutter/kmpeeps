@@ -20,14 +20,33 @@ export const handleSubmitSignIn = async function (event) {
         pass: "" + $(`#pswrd-signIn`).val() + ""
     });
 
-
     r.then(response => {
-        console.log(response.data);
+        event.preventDefault()
+        alert("hello");
+        let jwt = response.jwt
+        alert("hello")
+        let r = axios.get('http://localhost:3000/account/status',
+        {
+            headers: {
+                //jwt is the jwt from logging in
+                    "Authorization": "Bearer " + jwt
+            },
+            
+        });
+
+        r.then(response => {
+            console.log(response.data);
+        }).catch(error => {
+            console.log(error);
+        });
     }).catch(error => {
-        console.log(error);
+        alert(error);
     });
     
     window.location.href = "http://localhost:3001/index.html"
+
+    //document.getElementById("sign_in").style.visibility = "hidden";
+    //document.getElementById("sign_out").style.visibility = "show";
 }
 
 export const loadSignInForm = function () {
@@ -44,7 +63,7 @@ export const loadSignInForm = function () {
             <input type="text" placeholder="Enter Username" name="uname" id="uname-signIn" required>
         
             <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" id="pswrd-sign" required>
+            <input type="password" placeholder="Enter Password" name="psw" id="pswrd-signIn" required>
         
             <button class="button_signIn" type="submit" id="signInButton">Login</button>
             <label>
