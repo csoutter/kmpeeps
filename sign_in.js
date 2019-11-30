@@ -5,48 +5,51 @@ export const handleSubmitSignIn = async function (event) {
     event.preventDefault();
 
    // console.log($(`#uname-signIn`).val())
-/*
-    await axios({
-        method: "post",
-        url: "http://localhost:3000/account/create",
-        withCredentials: true,
-        name: $(`#uname-signIn`).val(),
-        pass: $(`#pswrd-signIn`).val()
-        
-    });*/
 
+    let r = await axios({
+        method: "post",
+        url: "http://localhost:3000/account/login",
+        data: {
+            name: "" + $(`#uname-signIn`).val() + "",
+            pass: "" + $(`#pswrd-signIn`).val() + ""
+        }
+    });
+
+    /*
     let r = axios.post('http://localhost:3000/account/login', {
         name: "" + $(`#uname-signIn`).val() + "",
         pass: "" + $(`#pswrd-signIn`).val() + ""
-    });
+    });*/
 
+    console.log(r)
+    window.jwt = r.data.jwt
+/*
     r.then(response => {
-        event.preventDefault()
-        alert("hello");
-        let jwt = response.jwt
-        alert("hello")
-        let r = axios.get('http://localhost:3000/account/status',
+        console.log(response.data);
+        window.jwt = response.data.jwt
+    }).catch(error => {
+        alert(error);
+    });*/
+
+    
+    let req = axios.get('http://localhost:3000/account/status', 
         {
             headers: {
-                //jwt is the jwt from logging in
-                    "Authorization": "Bearer " + jwt
-            },
-            
-        });
+                "Authorization": "Bearer " + window.jwt
+            }
+        }
+    );
 
-        r.then(response => {
-            console.log(response.data);
-        }).catch(error => {
-            console.log(error);
-        });
+    req.then(response => {
+        console.log(response.data);
+        window.location.href = "http://localhost:3001/index.html"
+        //document.getElementById("sign_in").remove()
+        //document.getElementById("sign_out").style.visibility = "show";
     }).catch(error => {
         alert(error);
     });
     
-    window.location.href = "http://localhost:3001/index.html"
 
-    //document.getElementById("sign_in").style.visibility = "hidden";
-    //document.getElementById("sign_out").style.visibility = "show";
 }
 
 export const loadSignInForm = function () {

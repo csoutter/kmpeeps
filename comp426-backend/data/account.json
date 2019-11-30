@@ -118,6 +118,14 @@
         "lname": "ndjnla",
         "account_type": "user"
       }
+    },
+    "sadiegirl": {
+      "passwordHash": "$2b$10$BiZgTJfDt3KwnV1ExkACceWPSx1VVi7roHhzwcFyzDY6AY9lRP9OS",
+      "data": {
+        "fname": "Sadie",
+        "lname": "Davis",
+        "account_type": "user"
+      }
     }
   }
 }
