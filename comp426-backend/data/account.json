@@ -126,6 +126,22 @@
         "lname": "Davis",
         "account_type": "user"
       }
+    },
+    "cxdavis": {
+      "passwordHash": "$2b$10$vo3.dTdY4rAkqNbaQ2x3JO7fFG8fcNlhPxwuxeir7uaSEBo4BGq9y",
+      "data": {
+        "fname": "Carolyn",
+        "lname": "Davis",
+        "account_type": "user"
+      }
+    },
+    "test123": {
+      "passwordHash": "$2b$10$3kd/mmujTY62PShRknfJmeD12OD7SnY/qGK4PQxlJEMl6LYuX47tm",
+      "data": {
+        "fname": "test",
+        "lname": "user",
+        "account_type": "user"
+      }
     }
   }
 }

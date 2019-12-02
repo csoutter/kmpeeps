@@ -42,7 +42,8 @@ export const handleSubmitSignIn = async function (event) {
 
     req.then(response => {
         console.log(response.data);
-        window.location.href = "http://localhost:3001/index.html"
+        window.location.href = "http://localhost:3001/signed_in.html"
+
         //document.getElementById("sign_in").remove()
         //document.getElementById("sign_out").style.visibility = "show";
     }).catch(error => {
@@ -85,6 +86,7 @@ export const loadSignInForm = function () {
     //set listeners for each added element
     $(`#signInButton`).on("click", null, null, handleSubmitSignIn);
 };
+
 
 $(function () {
     loadSignInForm();
