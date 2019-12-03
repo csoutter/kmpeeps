@@ -77,11 +77,15 @@ export const loadSignInForm = function () {
     
         <div class="container" style="background-color:#f1f1f1">
             <button type="button" class="button cancelbtn" id="cancelButton-signIn"><a href="index.html" style="text-decoration: none; color: white;">Cancel</a></button>
-            <span class="psw">Forgot <a href="#">Password?</a></span>
+            
             <span class="psw" style="padding-right: 20px;"><a href="sign_up.html">Create New Account</a></span>
         </div>
     </form>
     `;
+    // removed forgot password because logic is not needed for assignment; see code below
+    /*
+    <span class="psw">Forgot <a href="#">Password?</a></span>
+    */
     $root.append(form);
     //set listeners for each added element
     $(`#signInButton`).on("click", null, null, handleSubmitSignIn);
