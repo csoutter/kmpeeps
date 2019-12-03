@@ -34,7 +34,7 @@ export const handleCreateAccount = async function(event) {
         console.log(error);
     });
 
-    window.location.href = "http://localhost:3001/index.html"
+    window.location.href = "http://localhost:3001/sign_in.html"
     console.log($(`#sign-out`))
 
     //window.location = "index.html"
