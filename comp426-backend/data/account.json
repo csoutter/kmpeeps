@@ -142,6 +142,38 @@
         "lname": "user",
         "account_type": "user"
       }
+    },
+    "ttest": {
+      "passwordHash": "$2b$10$EnJjgffhroBc9IZGVZxwIObr0KzDRMUF9nogLH8dQZiT3/FmsOZLO",
+      "data": {
+        "fname": "t",
+        "lname": "test",
+        "account_type": "user"
+      }
+    },
+    "jdavis98": {
+      "passwordHash": "$2b$10$w7E3k7zntd8MjT2.c.xlXOBCn9fLykgyvFV0W23JACGfChoexpzyS",
+      "data": {
+        "fname": "Jessica",
+        "lname": "Davis",
+        "account_type": "private"
+      }
+    },
+    "csoutter": {
+      "passwordHash": "$2b$10$HIIO93xz7Xjy/8..OoKXFu5CqGiMpQ6sS6tszHdB4avgTOBRJsFKq",
+      "data": {
+        "fname": "Cassidy",
+        "lname": "Soutter",
+        "account_type": "private"
+      }
+    },
+    "abrosnan": {
+      "passwordHash": "$2b$10$0o8ZKZIHqTuFyhqgfEI/Su5FuU7PjoG/tbXWmp0hRuDzOxSFtJux6",
+      "data": {
+        "fname": "Abby ",
+        "lname": "Brosnan",
+        "account_type": "private"
+      }
     }
   }
 }
