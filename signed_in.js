@@ -61,7 +61,7 @@ export const makeUserComment = function(comments, room) {
                     <span class="icon is-small"><img id="${room.id}deleteComment" src="pictures/trash.png" style="width:20px;height:20px;margin-right:10px;"></span>
                 </a>
                 <a class="level-item">
-                    <span class="icon is-small"><img src="pictures/edit.svg"></span>
+                    <span class="icon is-small"><img id="${room.id}editComment" src="pictures/edit.svg"></span>
                 </a>
             </div>
           </div>
@@ -69,6 +69,7 @@ export const makeUserComment = function(comments, room) {
     });
     $(`#${room.id}AddCommentButton`).on("click", null, room, handleAddCommentButton);
     $(`#${room.id}deleteComment`).on("click", null, room, handleDeleteComment);
+    $(`#${room.id}editComment`).on("click", null, room, handleEditComment);
     return results;
 }
 
@@ -126,9 +127,43 @@ export const handleDeleteComment = function(event) {
     comment.replaceWith();
 }
 
+export const handleEditComment = function(event) {
+    console.log(event);
+    // const $comments = $('#addingComments'+event.data.id);
+    let allComments = $('#addingComments'+event.data.id);;
+    console.log(allComments);
+    let comment = document.getElementById(event.data.id + "userComment");
+    let originalRoom = lactationData[event.data.id - 1];
+    let numOfComments = originalRoom.comments.length;
+    let commentInfo = originalRoom.comments[numOfComments - 1];    
+    console.log(commentInfo);
+    let commentAddHtml = `
+    <article class="media" style="background-color: lightgrey; padding: 10px; margin: 3px;" id="commentCode${event.data.id}">
+    <div class="media-content">
+        <div class="field">
+        <p class="control" id="${event.data.id}CommentForm">
+            <textarea class="textarea" value="${commentInfo.message}" name="commentText"></textarea>
+        </p>
+        </div>
+        <nav class="level">
+        <div class="level-left">
+            <div class="level-item">
+            <a class="button is-info" id="${event.data.id}CommentSubmit">Submit</a>
+            </div>
+            <div class="level-item">
+            <a class="button is-info" id="${event.data.id}CommentCancel">Cancel</a>
+            </div>
+        </div>
+        </nav>
+    </div></article>`;
+    comment.replaceWith();
+    allComments.append(commentAddHtml);
+}
+
 export const handleAddCommentButton = function(event) {
     //TODO: see info on bulma on how to create this UI https://bulma.io/documentation/layout/media-object/
     const $comments = $('#addingComments'+event.data.id);
+    console.log($comments);
     let commentAddHtml = `
     <article class="media" style="background-color: lightgrey; padding: 10px; margin: 3px;" id="commentCode${event.data.id}">
     <div class="media-content">
@@ -185,7 +220,8 @@ export const handleSubmitCommentButton = function(event) {
     let $comments = $('#addingComments'+event.data.id);
     $comments.replaceWith(makeUserComment(newComment, event.data));
     $(`#${room.id}deleteComment`).on("click", null, room, handleDeleteComment);
-    $(`#${event.data.id}AddCommentButton`).on("click", null, room, handleAddCommentButton);
+    $(`#${room.id}AddCommentButton`).on("click", null, room, handleAddCommentButton);
+    $(`#${room.id}editComment`).on("click", null, room, handleEditComment);
 }
 
 export const loadRoomsIntoDOM = function(lactationData) {
