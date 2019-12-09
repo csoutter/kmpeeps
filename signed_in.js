@@ -5,11 +5,6 @@
  */
 export const renderLactationRoom = function(room) {
     let img = room.img;
-    /*if (room.favorited) {
-        //add filled in star
-    } else {
-        //add empty star
-    }*/
     let box = `<div class="container box section" id="${room.id}Room"><span><img src="${img}" style="max-width:430px; max-height:300px;"><h1 class="title is-1"}>Lactation Room in ${room.building}</h1></span>`;
     let location = `<div style="background-color: white;"><h3 class="subtitle">Room is on ${room.campusLocation}, in ${room.building} on floor ${room.floor}.</h3><p><em>Address:</em> ${room.address}</p>`;
     let ammenities = `<p><em>Amenities:</em>`+ makeAmmenities(room.features) +`</p>`;
@@ -43,6 +38,37 @@ export const makeComments = function(comments, room) {
           </div>
       </article>`;
     });
+    $(`#${room.id}AddCommentButton`).on("click", null, room, handleAddCommentButton);
+    return results;
+}
+
+export const makeUserComment = function(comments, room) {
+    let results = ``;
+    comments.forEach(comment => {
+        results = results + `<article id="${room.id}userComment" class="media" style="background-color: lightgrey; padding: 10px; margin: 3px;">
+        <figure class="media-left">
+            <p class="image is-64x64">
+            <img src="pictures/user.png">
+            </p>
+        </figure>
+        <div class="media-content">
+          <div class="content">
+            <p>
+              <strong>${comment.name}</strong> <small>${comment.time}</small><br> ${comment.message}
+            </p>
+            <div class="level-right">
+                <a id="${room.id}deleteComment" class="level-item>
+                    <span class="icon is-small"><img id="${room.id}deleteComment" src="pictures/trash.png" style="width:20px;height:20px;margin-right:10px;"></span>
+                </a>
+                <a class="level-item">
+                    <span class="icon is-small"><img src="pictures/edit.svg"></span>
+                </a>
+            </div>
+          </div>
+      </article>`;
+    });
+    $(`#${room.id}AddCommentButton`).on("click", null, room, handleAddCommentButton);
+    $(`#${room.id}deleteComment`).on("click", null, room, handleDeleteComment);
     return results;
 }
 
@@ -94,6 +120,12 @@ export const searchBar = function(e) {
     });
 }
 
+export const handleDeleteComment = function(event) {
+    console.log("in delete comment");
+    let comment = document.getElementById(event.data.id + "userComment");
+    comment.replaceWith();
+}
+
 export const handleAddCommentButton = function(event) {
     //TODO: see info on bulma on how to create this UI https://bulma.io/documentation/layout/media-object/
     const $comments = $('#addingComments'+event.data.id);
@@ -119,6 +151,7 @@ export const handleAddCommentButton = function(event) {
     $comments.append(commentAddHtml);
     $(`#${event.data.id}CommentCancel`).on("click", null, event.data, handleCancelCommentButton);
     $(`#${event.data.id}CommentSubmit`).on("click", null, event.data, handleSubmitCommentButton);
+    $(`#${event.data.id}AddCommentButton`).on("click", null, event.data, handleAddCommentButton);
 }
 
 export const handleGetDirectionsButton = function(event) {
@@ -143,16 +176,15 @@ export const handleSubmitCommentButton = function(event) {
     let originalRoom = lactationData[room.id - 1];
     let numOfComments = originalRoom.comments.length;
     originalRoom.comments[numOfComments] = {
-        name: "",
+        name: "Jessica",
         time: new Date(),
         message: values.commentText
     };
     let newComment = []; 
     newComment[0] = originalRoom.comments[numOfComments];
     let $comments = $('#addingComments'+event.data.id);
-    $comments.replaceWith(makeComments(newComment, event.data));
-    //BUG: comment button after adding a comment doesn't work anymore
-    //BUG: need to fix the name portion to come from user's info
+    $comments.replaceWith(makeUserComment(newComment, event.data));
+    $(`#${room.id}deleteComment`).on("click", null, room, handleDeleteComment);
     $(`#${event.data.id}AddCommentButton`).on("click", null, room, handleAddCommentButton);
 }
 
