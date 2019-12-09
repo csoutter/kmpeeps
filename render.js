@@ -7,7 +7,7 @@ export const renderLactationRoom = function(room) {
     let img = room.img;
     let box = `<div class="container box section" id="${room.id}Room"><span><img src="${img}" style="max-width:430px; max-height:300px;"><h1 class="title is-1"}>Lactation Room in ${room.building}</h1></span>`;
     let location = `<div style="background-color: white;"><h3 class="subtitle">Room is on ${room.campusLocation}, in ${room.building} on floor ${room.floor}.</h3><p><em>Address:</em> ${room.address}</p>`;
-    let ammenities = `<p><em>Amenitites:</em>`+ makeAmmenities(room.features) +`</p>`;
+    let ammenities = `<p><em>Amenities:</em>`+ makeAmmenities(room.features) +`</p>`;
     let comments = `<br><p><strong>Comments:</strong></p>` + makeComments(room.comments, room) + `<div id="addingComments${room.id}"></div>`;
     let button = `<button id="${room.id}AddCommentButton" class="button" style="background-color:black; color: white; margin-top: 10px;visibility:hidden;">Comment about this Room</button>`;
     let dir_button = `<button id="${room.id}Directions" class="button" style="background-color:black; color: white; margin-top: 10px;">Get directions to this Room</button>`;
